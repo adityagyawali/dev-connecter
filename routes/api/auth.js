@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const gravatar = require('gravatar')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const User = require('../../models/Auth')
 
@@ -65,6 +66,9 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, user.password)
                 .then( isMatch => {
                     if(isMatch) {
+                        //user matched
+
+                        //sign token
                         res.json({msg: 'Success'})
                     } else {
                         return res.status(404).json({password: 'Password Incorrect'})
