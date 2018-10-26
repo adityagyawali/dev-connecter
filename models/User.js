@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 //Create Auth Schema
-const AuthSchema = new Schema({
+const UserSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
@@ -19,12 +19,10 @@ const AuthSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	date:{
-
-
-		type:                   Date,
+	date: {
+		type: Date,
 		default: Date.now(),
 	},
 })
 
-module.exports = mongoose.model('auth', AuthSchema)
+module.exports = mongoose.model('user', UserSchema)
