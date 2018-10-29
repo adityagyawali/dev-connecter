@@ -45,9 +45,8 @@ router.get(
 //Public route
 
 router.get('/handle/:handle', (req, res) => {
-	console.log('req.params', req.param)
 	const errors = {}
-	Profile.findById({ handle: req.param.handle })
+	Profile.findById(req.params.handle)
 		.populate('user', ['name', 'avatar'])
 		.then(profile => {
 			if (!profile) {
@@ -68,7 +67,7 @@ router.get('/handle/:handle', (req, res) => {
 router.get('/user/:user_id', (req, res) => {
 	console.log('req.params', req.param)
 	const errors = {}
-	Profile.findById({ user_id: req.param.user_id })
+	Profile.findById(req.params.user_id)
 		.populate('user', ['name', 'avatar'])
 		.then(profile => {
 			if (!profile) {
