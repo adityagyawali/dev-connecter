@@ -6,20 +6,16 @@ const Homepage = () => {
 		<div className="Homepage">
 			<div className="container">
 				<div className="users">
-					<i class="fas fa-users" />
-					<p style={{ color: "white", fontSize: 20 }}>
-						Connect with developers around the world.
-					</p>
+					<i className="fas fa-users" />
+					<p>Connect with developers around the world.</p>
 				</div>
 				<div className="search">
-					<i class="fas fa-search" />
-					<p style={{ color: "white", fontSize: 20 }}>
-						Look for the developers all over the world.
-					</p>
+					<i className="fas fa-search" />
+					<p>Look for the developers all over the world.</p>
 				</div>
 				<div className="chat">
-					<i class="fas fa-comment" />
-					<p style={{ color: "white", fontSize: 20 }}>Join the conversation.</p>
+					<i className="fas fa-comment" />
+					<p>Join the conversation.</p>
 				</div>
 			</div>
 		</div>

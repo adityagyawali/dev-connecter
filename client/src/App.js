@@ -12,24 +12,24 @@ import "./App.css";
 class App extends Component {
 	render() {
 		return (
-			<Router basename="/auth/">
+			<Router>
 				<div className="App">
 					<Header />
 					<Homepage />
-					<div className="App__Form">
+					<div className="App-Form">
 						<div className="PageSwitcher">
 							<NavLink
 								to="/sign-in"
-								activeClassName="PageSwitcher__Item--Active"
-								className="PageSwitcher__Item"
+								activeClassName="PageSwitcher-Item-Active"
+								className="PageSwitcher-Item"
 							>
 								Sign In
 							</NavLink>
 							<NavLink
 								exact
 								to="/"
-								activeClassName="PageSwitcher__Item--Active"
-								className="PageSwitcher__Item"
+								activeClassName="PageSwitcher-Item-Active"
+								className="PageSwitcher-Item"
 							>
 								Sign Up
 							</NavLink>
@@ -38,8 +38,8 @@ class App extends Component {
 						<div className="FormTitle">
 							<NavLink
 								to="/sign-in"
-								activeClassName="FormTitle__Link--Active"
-								className="FormTitle__Link"
+								activeClassName="FormTitle-Link-Active"
+								className="FormTitle-Link"
 							>
 								Sign In
 							</NavLink>{" "}
@@ -47,8 +47,8 @@ class App extends Component {
 							<NavLink
 								exact
 								to="/"
-								activeClassName="FormTitle__Link--Active"
-								className="FormTitle__Link"
+								activeClassName="FormTitle-Link-Active"
+								className="FormTitle-Link"
 							>
 								Sign Up
 							</NavLink>

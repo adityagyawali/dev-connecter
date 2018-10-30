@@ -39,13 +39,13 @@ class SignUpForm extends Component {
 			<div className="FormCenter">
 				<form onSubmit={this.handleSubmit} className="FormFields">
 					<div className="FormField">
-						<label className="FormField__Label" htmlFor="name">
+						<label className="FormField-Label" htmlFor="name">
 							Full Name
 						</label>
 						<input
 							type="text"
 							id="name"
-							className="FormField__Input"
+							className="FormField-Input"
 							placeholder="Enter your full name"
 							name="name"
 							value={this.state.name}
@@ -54,13 +54,13 @@ class SignUpForm extends Component {
 					</div>
 
 					<div className="FormField">
-						<label className="FormField__Label" htmlFor="email">
+						<label className="FormField-Label" htmlFor="email">
 							E-Mail Address
 						</label>
 						<input
 							type="email"
 							id="email"
-							className="FormField__Input"
+							className="FormField-Input"
 							placeholder="Enter your email"
 							name="email"
 							value={this.state.email}
@@ -68,13 +68,13 @@ class SignUpForm extends Component {
 						/>
 					</div>
 					<div className="FormField">
-						<label className="FormField__Label" htmlFor="password">
+						<label className="FormField-Label" htmlFor="password">
 							Password
 						</label>
 						<input
 							type="password"
 							id="password"
-							className="FormField__Input"
+							className="FormField-Input"
 							placeholder="Enter your password"
 							name="password"
 							value={this.state.password}
@@ -82,13 +82,13 @@ class SignUpForm extends Component {
 						/>
 					</div>
 					<div className="FormField">
-						<label className="FormField__Label" htmlFor="password">
+						<label className="FormField-Label" htmlFor="password">
 							Confirm Password
 						</label>
 						<input
 							type="password"
 							id="password"
-							className="FormField__Input"
+							className="FormField-Input"
 							placeholder="Enter your password"
 							name="password"
 							value={this.state.password2}
@@ -97,24 +97,24 @@ class SignUpForm extends Component {
 					</div>
 
 					<div className="FormField">
-						<label className="FormField__CheckboxLabel">
+						<label className="FormField-CheckboxLabel">
 							<input
-								className="FormField__Checkbox"
+								className="FormField-Checkbox"
 								type="checkbox"
 								name="hasAgreed"
 								value={this.state.hasAgreed}
 								onChange={this.handleChange}
 							/>{" "}
 							I agree all statements in{" "}
-							<a href="/" className="FormField__TermsLink">
+							<a href="/" className="FormField-TermsLink">
 								terms of service
 							</a>
 						</label>
 					</div>
 
 					<div className="FormField">
-						<button className="FormField__Button mr-20">Sign Up</button>{" "}
-						<Link to="/sign-in" className="FormField__Link">
+						<button className="FormField-Button mr-20">Sign Up</button>{" "}
+						<Link to="/sign-in" className="FormField-Link">
 							I'm already member
 						</Link>
 					</div>

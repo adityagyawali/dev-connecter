@@ -8,10 +8,23 @@
 	display: flex;
 }
 
+.users p {
+	color: white;
+	font-size: 20px;
+}
+
+.search p {
+	color: white;
+	font-size: 20px;
+}
+.chat p {
+	color: white;
+	font-size: 20px;
+}
+
 .container {
 	width: 40%;
 	margin: auto;
-	padding-top: 15%;
 	font-weight: 500;
 }
 .fas {
@@ -19,4 +32,32 @@
 	margin-top: 15px;
 	margin-right: 8px;
 	color: white;
+}
+
+@media only screen and (min-device-width: 306px) and (max-device-width: 904px) and (-webkit-min-device-pixel-ratio: 1) {
+	.users p {
+		color: white;
+		font-size: 10px;
+	}
+
+	.search p {
+		color: white;
+		font-size: 10px;
+	}
+	.chat p {
+		color: white;
+		font-size: 10px;
+	}
+
+	.container {
+		width: 40%;
+		margin: auto;
+	}
+
+	.fas {
+		font-size: 10px;
+		margin-top: 15px;
+		margin-right: 8px;
+		color: white;
+	}
 }
