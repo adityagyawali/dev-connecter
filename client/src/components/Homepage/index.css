@@ -1,0 +1,22 @@
+.users {
+	display: flex;
+}
+.search {
+	display: flex;
+}
+.chat {
+	display: flex;
+}
+
+.container {
+	width: 40%;
+	margin: auto;
+	padding-top: 15%;
+	font-weight: 500;
+}
+.fas {
+	font-size: 30px;
+	margin-top: 15px;
+	margin-right: 8px;
+	color: white;
+}
