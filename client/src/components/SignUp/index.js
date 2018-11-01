@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class SignUpForm extends Component {
-	constructor() {
-		super();
+class SignUp extends Component {
+	state = {
+		email: "",
+		password: "",
+		password2: "",
+		name: "",
+		hasAgreed: false,
+		errors: {}
+	};
 
-		this.state = {
-			email: "",
-			password: "",
-			password2: "",
-			name: "",
-			hasAgreed: false
-		};
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleChange(e) {
+	handleChange = e => {
 		let target = e.target;
 		let value = target.type === "checkbox" ? target.checked : target.value;
 		let name = target.name;
@@ -25,14 +19,12 @@ class SignUpForm extends Component {
 		this.setState({
 			[name]: value
 		});
-	}
+	};
 
-	handleSubmit(e) {
+	handleSubmit = e => {
 		e.preventDefault();
-
-		console.log("The form was submitted with the following data:");
 		console.log(this.state);
-	}
+	};
 
 	render() {
 		return (
@@ -44,7 +36,7 @@ class SignUpForm extends Component {
 						</label>
 						<input
 							type="text"
-							id="name"
+							// id="name"
 							className="FormField-Input"
 							placeholder="Enter your full name"
 							name="name"
@@ -59,7 +51,7 @@ class SignUpForm extends Component {
 						</label>
 						<input
 							type="email"
-							id="email"
+							// id="email"
 							className="FormField-Input"
 							placeholder="Enter your email"
 							name="email"
@@ -73,7 +65,7 @@ class SignUpForm extends Component {
 						</label>
 						<input
 							type="password"
-							id="password"
+							// id="password"
 							className="FormField-Input"
 							placeholder="Enter your password"
 							name="password"
@@ -87,10 +79,10 @@ class SignUpForm extends Component {
 						</label>
 						<input
 							type="password"
-							id="password"
+							// id="password2"
 							className="FormField-Input"
-							placeholder="Enter your password"
-							name="password"
+							placeholder="Confirm password"
+							name="password2"
 							value={this.state.password2}
 							onChange={this.handleChange}
 						/>
@@ -123,4 +115,4 @@ class SignUpForm extends Component {
 		);
 	}
 }
-export default SignUpForm;
+export default SignUp;

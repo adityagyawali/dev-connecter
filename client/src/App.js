@@ -35,26 +35,7 @@ class App extends Component {
 							</NavLink>
 						</div>
 
-						<div className="FormTitle">
-							<NavLink
-								to="/sign-in"
-								activeClassName="FormTitle-Link-Active"
-								className="FormTitle-Link"
-							>
-								Sign In
-							</NavLink>{" "}
-							or{" "}
-							<NavLink
-								exact
-								to="/"
-								activeClassName="FormTitle-Link-Active"
-								className="FormTitle-Link"
-							>
-								Sign Up
-							</NavLink>
-						</div>
-
-						<Route exact path="/" component={SignUp} />
+						<Route exact path="" component={SignUp} />
 						<Route path="/sign-in" component={Login} />
 					</div>
 

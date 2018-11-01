@@ -14,7 +14,15 @@
 	color: #ffffff;
 	cursor: pointer;
 }
-ul > li {
+ul li {
 	list-style: none;
 	margin-right: 20px;
+}
+
+li:hover {
+	color: #4594da;
+}
+
+.home-link {
+	text-decoration: none;
 }
