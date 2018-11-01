@@ -2,8 +2,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-
+const cors = require('cors')
 const app = express()
+
+//cors
+app.use(cors())
 
 const user = require('./routes/api/user')
 const profile = require('./routes/api/profile')
@@ -36,7 +39,7 @@ app.use('/api/profile', profile)
 app.use('/api/posts', posts)
 
 //Listening to port
-const port = process.env.PORT || 8002
+const port = 5000
 
 app.listen(port, () => {
 	console.log(`Server is running in ${port}`)
