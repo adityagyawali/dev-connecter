@@ -3,11 +3,13 @@
 .Header {
 	grid-area: h;
 	background-color: #504e4e;
+	display: flex;
+	justify-content: space-between;
 }
 .Homepage {
 	grid-area: s;
 	background-color: #4594da;
-	padding: 10%;
+	padding: 16%;
 }
 
 .Login {
@@ -34,9 +36,10 @@
 
 .App-Form {
 	grid-area: f;
-	background-color: #203044;
+	/* background-color: #203044; */
 	padding: 25px 40px;
 	overflow: auto;
+	margin-top: 25%;
 }
 
 .PageSwitcher {
@@ -73,6 +76,7 @@
 
 .FormCenter {
 	margin-bottom: 100px;
+	grid-column: 4/8;
 }
 
 .FormTitle {
@@ -113,7 +117,7 @@
 	width: 85%;
 	background-color: transparent;
 	border: none;
-	color: white;
+	color: rgb(41, 27, 27);
 	outline: none;
 	border-bottom: 1px solid #445366;
 	font-size: 1em;
@@ -157,7 +161,7 @@
 }
 
 .FormField-TermsLink {
-	color: white;
+	color: rgb(10, 63, 5);
 	border-bottom: 1px solid #199087;
 	text-decoration: none;
 	display: inline-block;
@@ -166,7 +170,7 @@
 }
 
 @media only screen and (min-device-width: 306px) and (max-device-width: 904px) and (-webkit-min-device-pixel-ratio: 1) {
-	.App {
+	/* .App {
 		height: 100vh;
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
@@ -176,7 +180,7 @@
 			"s s s s s s"
 			"f f f f f f "
 			"ft ft ft ft ft ft ";
-	}
+	} */
 
 	.Header {
 		grid-area: h;
@@ -184,11 +188,11 @@
 		background-color: #504e4e;
 	}
 
-	.Homepage {
+	/* .Homepage {
 		grid-area: s;
 		background-color: #4594da;
 		padding: 20px;
-	}
+	} */
 
 	.Login {
 		grid-area: f;
@@ -204,5 +208,17 @@
 	}
 	.FormTitle {
 		display: none;
+	}
+	.FormCenter {
+		margin-bottom: 100px;
+		grid-column: 3/12;
+	}
+
+	.FormField-Button {
+		margin-bottom: 9px;
+	}
+
+	a.FormField-Link {
+		margin-left: 25px;
 	}
 }

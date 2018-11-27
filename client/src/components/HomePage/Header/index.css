@@ -26,3 +26,21 @@ li:hover {
 .home-link {
 	text-decoration: none;
 }
+
+.avatar {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+.logout-anchor {
+	display: flex;
+	text-decoration: none;
+}
+
+.logout-anchor > p {
+	color: white;
+	margin: 0px;
+	font-size: 19px;
+}

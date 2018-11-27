@@ -1,44 +1,34 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PropTypes from "prop-types";
+import Header from "./components/HomePage/Header";
 
-import Homepage from "./components/Homepage";
-import Footer from "./components/Footer";
-import SignUp from "./components/SignUp";
-import Header from "./components/Header";
-import Login from "./components/Login";
+import Footer from "./components/HomePage/Footer";
+import SignUp from "./components/Auth/SignUp/index";
+import SignIn from "./components/Auth/Login/index";
+
+import LandingPage from "./components/HomePage/LandingPage";
+
+import { connect } from "react-redux";
 
 import "./App.css";
 
 class App extends Component {
+	componentDidMount() {
+		if (this.props.auth.isAuthenticated) {
+			this.props.history.push("/dashboard");
+		}
+	}
 	render() {
 		return (
 			<Router>
 				<div className="App">
 					<Header />
-					<Homepage />
-					<div className="App-Form">
-						<div className="PageSwitcher">
-							<NavLink
-								to="/sign-in"
-								activeClassName="PageSwitcher-Item-Active"
-								className="PageSwitcher-Item"
-							>
-								Sign In
-							</NavLink>
-							<NavLink
-								exact
-								to="/"
-								activeClassName="PageSwitcher-Item-Active"
-								className="PageSwitcher-Item"
-							>
-								Sign Up
-							</NavLink>
-						</div>
-
-						<Route exact path="" component={SignUp} />
-						<Route path="/sign-in" component={Login} />
-					</div>
-
+					<Route exact path="/" component={LandingPage} />
+					<Switch>
+						<Route exact path="/sign-in" component={SignIn} />
+						<Route exact path="/sign-up" component={SignUp} />
+					</Switch>
 					<Footer />
 				</div>
 			</Router>
@@ -46,4 +36,13 @@ class App extends Component {
 	}
 }
 
-export default App;
+App.propTypes = {
+	auth: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(App);
+// export default App;
