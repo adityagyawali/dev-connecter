@@ -16,7 +16,7 @@ class Header extends Component {
 		const authLinks = (
 			<ul className="logout-header">
 				<li className="geekconnector">
-					<a href="" className="logout-anchor" onClick={this.onLogOut}>
+					<a role="button" className="logout-anchor" onClick={this.onLogOut}>
 						<img className="avatar" src={user.avatar} alt={user.name} />{" "}
 						<p>Logout</p>
 					</a>{" "}

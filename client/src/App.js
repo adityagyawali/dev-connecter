@@ -14,11 +14,11 @@ import { connect } from "react-redux";
 import "./App.css";
 
 class App extends Component {
-	componentDidMount() {
-		if (this.props.auth.isAuthenticated) {
-			this.props.history.push("/dashboard");
-		}
-	}
+	// componentDidMount() {
+	// 	if (this.props.auth.isAuthenticated) {
+	// 		this.props.history.push("/dashboard");
+	// 	}
+	// }
 	render() {
 		return (
 			<Router>
