@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { singOut } from "../../../actions/authAction";
-
+import { clearCurrentProfile } from "../../../actions/profileActions";
 import "./index.css";
 
 class Header extends Component {
 	onLogOut = e => {
 		e.preventDefault();
+		this.props.clearCurrentProfile();
 		this.props.singOut();
 	};
 	render() {
@@ -16,7 +17,7 @@ class Header extends Component {
 		const authLinks = (
 			<ul className="logout-header">
 				<li className="geekconnector">
-					<a role="button" className="logout-anchor" onClick={this.onLogOut}>
+					<a role="button" onClick={this.onLogOut} className="logout-anchor">
 						<img className="avatar" src={user.avatar} alt={user.name} />{" "}
 						<p>Logout</p>
 					</a>{" "}
@@ -52,5 +53,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ singOut }
+	{ singOut, clearCurrentProfile }
 )(Header);

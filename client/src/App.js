@@ -8,7 +8,7 @@ import SignUp from "./components/Auth/SignUp/index";
 import SignIn from "./components/Auth/Login/index";
 
 import LandingPage from "./components/HomePage/LandingPage";
-
+import Dashboard from "./components/DashBoard";
 import { connect } from "react-redux";
 
 import "./App.css";
@@ -28,6 +28,7 @@ class App extends Component {
 					<Switch>
 						<Route exact path="/sign-in" component={SignIn} />
 						<Route exact path="/sign-up" component={SignUp} />
+						<Route exact path="/dashboard" component={Dashboard} />
 					</Switch>
 					<Footer />
 				</div>

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import jwtDecode from "jwt-decode";
 import { setAuthToken } from "./utils/setAuthToken";
 import { setCurrentUser, singOut } from "./actions/authAction";
+import { clearCurrentProfile } from "./actions/profileActions";
 
 import store from "./store";
 import "./index.css";
@@ -26,8 +27,8 @@ if (localStorage.jwt) {
 	if (decoded.exp < currentTime) {
 		//logout user
 		store.dispatch(singOut());
-		//todo: clear current profile
-
+		// clear current profile
+		store.dispatch(clearCurrentProfile());
 		//redirect to login page
 		window.location.href = "/sing-in";
 	}

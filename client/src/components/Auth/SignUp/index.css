@@ -1,3 +1,13 @@
 .invalid {
-	color: #da5a5a;
+	color: #aa0909;
+}
+.form {
+	background: #fff;
+	border-radius: 2px;
+	display: block;
+	float: left;
+	height: 150px;
+	margin: 1rem;
+	position: relative;
+	width: 150px;
 }

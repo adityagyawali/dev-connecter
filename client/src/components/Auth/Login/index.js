@@ -56,13 +56,13 @@ class Login extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div className="FormCenter">
+			<div className=" FormCenter">
 				<h5
 					style={{
 						textAlign: "center",
 						fontSize: 20,
 						paddingRight: 40,
-						color: "#1986df"
+						color: "black"
 					}}
 				>
 					Great to see you again!!

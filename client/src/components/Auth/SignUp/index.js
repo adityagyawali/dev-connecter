@@ -57,13 +57,13 @@ class SignUp extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<div className="FormCenter">
+			<div className=" FormCenter">
 				<h5
 					style={{
 						textAlign: "center",
 						fontSize: 20,
 						paddingRight: 40,
-						color: "#1986df"
+						color: "black"
 					}}
 				>
 					Create a new account!!
@@ -173,7 +173,9 @@ const mapStateToProps = state => ({
 	errors: state.errors
 });
 
-export default connect(
-	mapStateToProps,
-	{ signUp }
-)(withRouter(SignUp));
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ signUp }
+	)(SignUp)
+);
