@@ -7,6 +7,7 @@ import Footer from "./components/HomePage/Footer";
 import SignUp from "./components/Auth/SignUp/index";
 import SignIn from "./components/Auth/Login/index";
 
+import PrivateRoute from "./components/Common/PrivateRoute";
 import LandingPage from "./components/HomePage/LandingPage";
 import Dashboard from "./components/DashBoard";
 import { connect } from "react-redux";
@@ -25,10 +26,11 @@ class App extends Component {
 				<div className="App">
 					<Header />
 					<Route exact path="/" component={LandingPage} />
+
+					<Route exact path="/sign-in" component={SignIn} />
+					<Route exact path="/sign-up" component={SignUp} />
 					<Switch>
-						<Route exact path="/sign-in" component={SignIn} />
-						<Route exact path="/sign-up" component={SignUp} />
-						<Route exact path="/dashboard" component={Dashboard} />
+						<PrivateRoute exact path="/dashboard" component={Dashboard} />
 					</Switch>
 					<Footer />
 				</div>

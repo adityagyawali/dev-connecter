@@ -1,0 +1,7 @@
+.dashboard {
+	grid-column: 6;
+}
+.card-content {
+	margin-top: 40%;
+	height: 100px;
+}

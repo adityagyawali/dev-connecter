@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import { Segment, Button, Divider } from "semantic-ui-react";
+
 import "./index.css";
 
 class Landing extends Component {
@@ -31,16 +33,29 @@ class Landing extends Component {
 					<span style={{ color: "black", fontWeight: 600 }}>
 						Join Devconnector today.
 					</span>
+					<Segment padded>
+						<Link style={{ textDecoration: "none" }} to="/sign-in">
+							<Button primary fluid>
+								Login
+							</Button>
+						</Link>
+						<Divider horizontal>Or</Divider>
+						<Link style={{ textDecoration: "none" }} to="/sign-up">
+							<Button primary fluid>
+								Sign Up
+							</Button>
+						</Link>
+					</Segment>
 
-					<div className="leftbar-buttons">
+					{/* <div className="leftbar-buttons">
 						<Link style={{ textDecoration: "none" }} to="/sign-up">
 							<button className="signup">SignUp</button>{" "}
 						</Link>
 
 						<Link style={{ textDecoration: "none" }} to="/sign-in">
 							<button className="login">Login</button>
-						</Link>
-					</div>
+						
+					</div> */}
 				</div>
 			</div>
 		);

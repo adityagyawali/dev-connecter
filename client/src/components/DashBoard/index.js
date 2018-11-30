@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
+import { Card, Button } from "semantic-ui-react";
 
 import Loader from "../Common/Loader";
-
 import { getCurrentProfile } from "../../actions/profileActions";
-
+import "./index.css";
 class DashBoard extends Component {
 	componentDidMount() {
 		this.props.getCurrentProfile();
@@ -16,6 +16,11 @@ class DashBoard extends Component {
 		const { user } = this.props.auth;
 		const { profile, loading } = this.props.profile;
 
+		const button = (
+			<Link to="create-profile">
+				<Button primary>Create Profile</Button>
+			</Link>
+		);
 		let dashboardContent;
 		if (profile === null || loading) {
 			dashboardContent = <Loader />;
@@ -26,18 +31,21 @@ class DashBoard extends Component {
 			} else {
 				//user is logged in but doesn't have a profiel
 				dashboardContent = (
-					<div>
-						<p>Welcome {user.name}</p>
-						<p>You haven't set up a profile. Please add some information.</p>
-						<Link to="create-profile"> Create Profile </Link>
+					<div className="card-content">
+						<Card
+							image={user.avatar}
+							header={user.name}
+							description="You haven't set up a profile. Please add some information."
+							extra={button}
+						/>
 					</div>
 				);
 			}
 		}
 
 		return (
-			<div>
-				<h1>This is Dashboard Compoenent</h1>
+			<div className="dashboard">
+				<h1>DashBoard</h1>
 				{dashboardContent}
 			</div>
 		);

@@ -200,6 +200,8 @@
 		grid-area: h;
 
 		background-color: #504e4e;
+		display: flex;
+		flex-direction: column;
 	}
 
 	/* .Homepage {
@@ -214,7 +216,7 @@
 
 	.Footer {
 		grid-area: ft;
-		background-color: #1986df;
+		background-color: #c8dbeb;
 	}
 
 	.PageSwitcher {
