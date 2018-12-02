@@ -3,9 +3,17 @@ import { Link } from "react-router-dom";
 
 import { Segment, Button, Divider } from "semantic-ui-react";
 
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
 import "./index.css";
 
 class Landing extends Component {
+	componentDidMount() {
+		if (this.props.auth.isAuthenticated) {
+			this.props.history.push("/dashboard");
+		}
+	}
 	render() {
 		return (
 			<div className="App-1">
@@ -35,7 +43,7 @@ class Landing extends Component {
 					</span>
 					<Segment padded>
 						<Link style={{ textDecoration: "none" }} to="/sign-in">
-							<Button primary fluid>
+							<Button className="login" fluid>
 								Login
 							</Button>
 						</Link>
@@ -61,5 +69,12 @@ class Landing extends Component {
 		);
 	}
 }
+Landing.propTypes = {
+	auth: PropTypes.object.is
+};
 
-export default Landing;
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);

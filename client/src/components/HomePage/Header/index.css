@@ -44,3 +44,8 @@ li:hover {
 	margin: 0px;
 	font-size: 19px;
 }
+
+ul.logout-header {
+	display: flex;
+	justify-content: flex-end;
+}

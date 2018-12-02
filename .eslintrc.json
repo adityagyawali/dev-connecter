@@ -19,6 +19,7 @@
 				"after": true
 			}
 		],
+
 		"eol-last": ["error", "always"],
 		"indent": ["error", "tab"],
 		"no-multiple-empty-lines": ["error"],

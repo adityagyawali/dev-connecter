@@ -10,6 +10,7 @@ import SignIn from "./components/Auth/Login/index";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import LandingPage from "./components/HomePage/LandingPage";
 import Dashboard from "./components/DashBoard";
+import CreateProfile from "./components/CreateProfile";
 import { connect } from "react-redux";
 
 import "./App.css";
@@ -25,13 +26,19 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<Header />
-					<Route exact path="/" component={LandingPage} />
 
+					<Route exact path="/" component={LandingPage} />
 					<Route exact path="/sign-in" component={SignIn} />
 					<Route exact path="/sign-up" component={SignUp} />
 					<Switch>
 						<PrivateRoute exact path="/dashboard" component={Dashboard} />
+						<PrivateRoute
+							exact
+							path="/create-profile"
+							component={CreateProfile}
+						/>
 					</Switch>
+
 					<Footer />
 				</div>
 			</Router>
