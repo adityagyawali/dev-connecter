@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import Header from "./components/HomePage/Header";
 
-import Footer from "./components/HomePage/Footer";
+// import Footer from "./components/HomePage/Footer";
 import SignUp from "./components/Auth/SignUp/index";
 import SignIn from "./components/Auth/Login/index";
 
@@ -26,20 +26,19 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<Header />
-
-					<Route exact path="/" component={LandingPage} />
-					<Route exact path="/sign-in" component={SignIn} />
-					<Route exact path="/sign-up" component={SignUp} />
-					<Switch>
-						<PrivateRoute exact path="/dashboard" component={Dashboard} />
-						<PrivateRoute
-							exact
-							path="/create-profile"
-							component={CreateProfile}
-						/>
-					</Switch>
-
-					<Footer />
+					<div className="app-container">
+						<Route exact path="/" component={LandingPage} />
+						<Route exact path="/sign-in" component={SignIn} />
+						<Route exact path="/sign-up" component={SignUp} />
+						<Switch>
+							<PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute
+								exact
+								path="/create-profile"
+								component={CreateProfile}
+							/>
+						</Switch>
+					</div>
 				</div>
 			</Router>
 		);

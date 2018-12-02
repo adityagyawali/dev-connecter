@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { singOut } from "../../../actions/authAction";
@@ -15,41 +15,65 @@ class Header extends Component {
 	render() {
 		const { isAuthenticated, user } = this.props.auth;
 		const authLinks = (
-			<ul className="logout-header">
-				<li className="geekconnector">
-					<a
-						href="logout"
-						role="button"
-						onClick={this.onLogOut}
-						className="logout-anchor"
-					>
-						<img className="avatar" src={user.avatar} alt={user.name} />{" "}
-						<p>Logout</p>
-					</a>{" "}
-				</li>{" "}
+			<ul className="right valign-wrapper">
+				<li>
+					<NavLink to="/post">Post Feed</NavLink>
+				</li>
+				<li>
+					<NavLink to="/dashboard">Dashboard</NavLink>
+				</li>
+				<li style={{ display: "flex" }}>
+					<a onClick={this.onLogOut}>
+						<img
+							src={user.avatar}
+							alt={user.name}
+							className="circle responsive-img"
+							style={{ width: "35px", marginRight: "10px" }}
+						/>
+						<span>Logout</span>
+					</a>
+				</li>
 			</ul>
 		);
+
+		const guestLinks = (
+			<ul className="right">
+				<li>
+					<NavLink to="/sign-up">Sign Up</NavLink>
+				</li>
+				<li>
+					<NavLink to="/sign-in">Log in</NavLink>
+				</li>
+			</ul>
+		);
+
 		return (
-			<div className="Header">
-				<ul className="header-text">
-					<Link to="/" className="home-link">
-						{" "}
-						<li className="geekconnector">GeekConnector </li>{" "}
-					</Link>
-					<Link to="/profiles" className="home-link">
-						{" "}
-						<li className="geeks">Geeks </li>
-					</Link>
-				</ul>
-				{isAuthenticated ? authLinks : ""}
-			</div>
+			<nav className="indigo darken-4">
+				<div className="nav-wrapper container">
+					<ul className="left">
+						<li>
+							<NavLink
+								to="/"
+								className="logo mg-70 scale-transition transparent"
+							>
+								DevConnector
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/profile">Developers</NavLink>
+						</li>
+					</ul>
+
+					{isAuthenticated ? authLinks : guestLinks}
+				</div>
+			</nav>
 		);
 	}
 }
 
 Header.propTypes = {
-	auth: PropTypes.object,
-	singOut: PropTypes.func
+	auth: PropTypes.object.isRequired,
+	singOut: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

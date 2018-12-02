@@ -5,14 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { createProfile } from "../../actions/profileActions";
-import {
-	Form,
-	Input,
-	Button,
-	TextArea,
-	Grid,
-	GridColumn
-} from "semantic-ui-react";
+import TextFieldGroup from "../Common/TextFiledGroup";
 
 import "./index.css";
 class CreateProfile extends Component {
@@ -71,177 +64,178 @@ class CreateProfile extends Component {
 	};
 	render() {
 		const { errors, displaySocialInputs } = this.state;
+
 		let socialInputs;
+
 		if (displaySocialInputs) {
 			socialInputs = (
-				<GridColumn>
-					<Input
-						label="facebook f"
-						placeholder="facebook "
-						onChange={this.handleChange}
-						value={this.state.facebook}
+				<div>
+					<TextFieldGroup
 						name="facebook"
+						label="Facebook"
+						value={this.state.facebook}
 						error={errors.facebook}
-					/>
-					<Input
-						label="facebook f"
-						placeholder="twitter"
 						onChange={this.handleChange}
-						value={this.state.twitter}
+					/>
+					<TextFieldGroup
 						name="twitter"
+						label="Twitter"
+						value={this.state.twitter}
 						error={errors.twitter}
-					/>
-					<Input
-						label="facebook f"
-						placeholder="linkedin"
 						onChange={this.handleChange}
-						value={this.state.linkedin}
+					/>
+					<TextFieldGroup
 						name="linkedin"
+						label="Linkedin"
+						value={this.state.linkedin}
 						error={errors.linkedin}
-					/>
-					<Input
-						label="facebook f"
-						placeholder="youtube"
 						onChange={this.handleChange}
-						value={this.state.youtube}
-						name="youtube"
-						error={errors.youtube}
 					/>
-					<Input
-						label="facebook f"
-						placeholder="instagram"
-						onChange={this.handleChange}
-						value={this.state.instagram}
+					<TextFieldGroup
 						name="instagram"
+						label="Instagram"
+						value={this.state.instagram}
 						error={errors.instagram}
+						onChange={this.handleChange}
 					/>
-				</GridColumn>
+				</div>
 			);
 		}
 
-		const options = [
-			{ label: "* Select Professional Status", value: 0 },
-			{ label: "Developer", value: "Developer" },
-			{ label: "Junior Developer", value: "Junior Developer" },
-			{ label: "Senior Developer", value: "Senior Developer" },
-			{ label: "Manager", value: "Manager" },
-			{ label: "Student or Learning", value: "Student or Learning" },
-			{ label: "Instructor or Teacher", value: "Instructor or Teacher" },
-			{ label: "Intern", value: "Intern" },
-			{ label: "Other", value: "Other" }
-		];
 		return (
-			<div className="create-profile">
-				<Button primary>Go Back</Button>
-
-				<h1 className="container">Create Your Profile</h1>
+			<div className="row">
+				<h1>Create Your Profile</h1>
 				<p>Let's get some information to make your profile stand out</p>
-				<span>*=required</span>
+				<form className="col s12" onSubmit={this.handleSubmit}>
+					<TextFieldGroup
+						name="handle"
+						value={this.state.handle}
+						label="* Profile Handle"
+						onChange={this.handleChange}
+						icon="insert_link"
+						error={errors.handle}
+						info="A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)"
+					/>
 
-				<Form onSubmit={this.handleSubmit}>
-					<Grid columns={2} relaxed>
-						<GridColumn>
-							<Form.Field required>
-								<label>Profile handle</label>
-								<Input
-									placeholder="Profile handle should be unique"
-									onChange={this.handleChange}
-									value={this.state.handle}
-									name="handle"
-									error={errors.handle}
-								/>
-							</Form.Field>
-							<Form.Select
-								fluid
-								options={options}
-								// placeholder="Select Your Profession"
-								value={this.state.status}
-								name="status"
-								error={errors.status}
+					<div className="input-field col s12">
+						<select
+							className="browser-default"
+							value={this.state.status}
+							name="status"
+							onChange={this.handleChange}
+						>
+							<option value="" disabled defaultValue>
+								* Select Professional Status
+							</option>
+							<option value="Developer">Developer</option>
+							<option value="Junior Developer">Junior Developer</option>
+							<option value="Senior Developer">Senior Developer</option>
+							<option value="Manager">Manager</option>
+							<option value="Student or Learning">Student or Learning</option>
+							<option value="Instructor or Teacher">
+								Instructor or Teacher
+							</option>
+							<option value="Intern">Intern</option>
+							<option value="Other">Other</option>
+						</select>
+						<span className="helper-text left red-text">
+							{errors.status ? errors.status : ""}
+						</span>
+						<span
+							className={
+								errors.status ? "helper-text left red-text" : "helper-text left"
+							}
+						>
+							{errors.status
+								? errors.status
+								: "Give us an idea of where you are at in your career"}
+						</span>
+					</div>
+
+					<TextFieldGroup
+						name="company"
+						value={this.state.company}
+						label="Company"
+						onChange={this.handleChange}
+						icon="account_balance"
+						info="Could be your own company or one you work for"
+					/>
+
+					<TextFieldGroup
+						name="website"
+						value={this.state.website}
+						label="Website"
+						onChange={this.handleChange}
+						icon="language"
+						info="Could be your own or a company website"
+					/>
+
+					<TextFieldGroup
+						name="location"
+						value={this.state.location}
+						label="Location"
+						onChange={this.handleChange}
+						icon="location_on"
+						info="City & state suggested (eg. Boston, MA)"
+					/>
+
+					<TextFieldGroup
+						name="skills"
+						value={this.state.skills}
+						label="* Skills"
+						onChange={this.handleChange}
+						error={errors.skills}
+						icon="format_list_bulleted"
+						info="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
+					/>
+
+					<TextFieldGroup
+						name="githubusername"
+						value={this.state.githubusername}
+						label="Github Username"
+						onChange={this.handleChange}
+						icon="code"
+						info="If you want your latest repos and a Github link, include your username"
+					/>
+
+					<div className="row">
+						<div className="input-field col s12">
+							<textarea
+								name="bio"
+								id="textarea2"
+								className="materialize-textarea"
+								value={this.state.bio}
+								onChange={this.handleChange}
+								data-length="120"
 							/>
-							<Form.Field>
-								<label>Company</label>
-								<Input
-									placeholder="Company you work for"
-									onChange={this.handleChange}
-									value={this.state.company}
-									name="company"
-									error={errors.company}
-								/>
-							</Form.Field>
-							<Form.Field>
-								<label>Website</label>
-								<Input
-									placeholder="Could be your own or a company website"
-									onChange={this.handleChange}
-									value={this.state.website}
-									name="website"
-									error={errors.website}
-								/>
-							</Form.Field>
-							<Form.Field>
-								<label>Location</label>
-								<Input
-									placeholder="City & state suggested (eg. Boston, MA)"
-									onChange={this.handleChange}
-									value={this.state.location}
-									name="location"
-									error={errors.location}
-								/>
-							</Form.Field>
-							<Form.Field>
-								<label>Skills</label>
-								<Input
-									placeholder="Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
-									onChange={this.handleChange}
-									value={this.state.skills}
-									name="skills"
-									error={errors.skills}
-								/>
-							</Form.Field>
-							<Form.Field>
-								<label>Github Username</label>
-								<Input
-									placeholder="If you want your latest repos and a Github link, include your username"
-									onChange={this.handleChange}
-									value={this.state.githubusername}
-									name="githubusername"
-									error={errors.githubusername}
-								/>
-							</Form.Field>
-							<Form.Field required>
-								<label>Bio</label>
-								<TextArea
-									placeholder="Tell us a little about yourself"
-									onChange={this.handleChange}
-									value={this.state.bio}
-									name="bio"
-									error={errors.bio}
-								/>
-							</Form.Field>
-						</GridColumn>
-						<GridColumn>
-							<div
-								className="social-media"
-								style={{ display: "flex", flexDirection: "column" }}
+							<label htmlFor="textarea2">A short bio of yourself</label>
+						</div>
+					</div>
+
+					<div className="row">
+						<a
+							className="btn waves-effect waves-light left"
+							onClick={() => {
+								this.setState(prevState => ({
+									displaySocialInputs: !prevState.displaySocialInputs
+								}));
+							}}
+						>
+							Add Social Network Links
+						</a>
+						{socialInputs}
+						<div className="row">
+							<button
+								className="btn-large waves-effect waves-light"
+								type="submit"
+								name="action"
 							>
-								<Button
-									type="button"
-									onClick={() =>
-										this.setState(prevState => ({
-											displaySocialInputs: !prevState.displaySocialInputs
-										}))
-									}
-									style={{ marginBottom: 5 }}
-								>
-									Add Social Links
-								</Button>
-								{socialInputs}
-							</div>
-						</GridColumn>
-					</Grid>
-					<Button primary>Submit</Button>
-				</Form>
+								Submit
+								<i className="material-icons right">send</i>
+							</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		);
 	}
