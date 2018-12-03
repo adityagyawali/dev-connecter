@@ -43,7 +43,7 @@ class Landing extends Component {
 					</span>
 					<Segment padded>
 						<Link style={{ textDecoration: "none" }} to="/sign-in">
-							<Button className="login" primary fluid>
+							<Button className="login" style={{ color: "black" }} fluid>
 								Login
 							</Button>
 						</Link>

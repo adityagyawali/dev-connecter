@@ -17,6 +17,7 @@ const TextFieldGroup = props => {
 		<div className="row">
 			<div className="input-field col s12">
 				<i className="material-icons prefix">{icon}</i>
+
 				<input
 					id={name}
 					type={type}
@@ -45,7 +46,7 @@ TextFieldGroup.propTypes = {
 	label: PropTypes.string,
 	error: PropTypes.string,
 	info: PropTypes.string,
-	type: PropTypes.string.isRequired,
+	type: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
 	disabled: PropTypes.string,
 	icon: PropTypes.string

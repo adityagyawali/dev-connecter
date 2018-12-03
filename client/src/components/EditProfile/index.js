@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { createProfile } from "../../actions/profileActions";
+import PropTypes from "prop-types";
+
+import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import TextFieldGroup from "../Common/TextFiledGroup";
 
-import "./index.css";
-class CreateProfile extends Component {
+import { isEmpty } from "../../validation/is-empty";
+
+class EditProfile extends Component {
 	state = {
 		displaySocialInputs: false,
 		handle: "",
@@ -23,12 +24,69 @@ class CreateProfile extends Component {
 		facebook: "",
 		linkedin: "",
 		youtube: "",
-		instagram: ""
-		// errors: {}
+		instagram: "",
+		errors: {}
 	};
+	//1.first this gets the current profile
+	componentDidMount() {
+		this.props.getCurrentProfile();
+		console.log(this.props.getCurrentProfile);
+	}
+
+	//3
 
 	componentDidUpdate = (prevProps, prevState) => {
-		console.log("prevProps", prevProps);
+		if (prevProps.profile.profile !== this.props.profile.profile) {
+			const { profile } = this.props.profile;
+			console.log("profile", profile);
+			const skills = profile.skills.join(",");
+			console.log("skills", skills);
+
+			//if user hasn't fill the profile filed previously make it a empty string
+			let {
+				handle,
+				status,
+				company,
+				website,
+				location,
+				githubusername,
+				bio,
+				social,
+				twitter,
+				facebook,
+				instagram,
+				youtube,
+				linkedin
+			} = profile;
+			company = !isEmpty(company) ? company : "";
+			website = !isEmpty(website) ? website : "";
+			location = !isEmpty(location) ? location : "";
+			githubusername = !isEmpty(githubusername) ? githubusername : "";
+			bio = !isEmpty(bio) ? bio : "";
+			social = !isEmpty(social) ? social : {};
+			twitter = !isEmpty(social.twitter) ? social.twitter : "";
+			facebook = !isEmpty(social.facebook) ? social.facebook : "";
+			instagram = !isEmpty(social.instagram) ? social.instagram : "";
+			youtube = !isEmpty(social.youtube) ? social.youtube : "";
+			linkedin = !isEmpty(social.linkedin) ? social.linkedin : "";
+
+			// Set component fields state
+			this.setState({
+				handle,
+				company,
+				website,
+				location,
+				status,
+				skills,
+				githubusername,
+				bio,
+				twitter,
+				facebook,
+				linkedin,
+				youtube,
+				instagram
+			});
+		}
 	};
 
 	handleSubmit = e => {
@@ -58,8 +116,7 @@ class CreateProfile extends Component {
 		});
 	};
 	render() {
-		const { displaySocialInputs } = this.state;
-		const { errors } = this.props;
+		const { errors, displaySocialInputs } = this.state;
 
 		let socialInputs;
 
@@ -100,8 +157,8 @@ class CreateProfile extends Component {
 
 		return (
 			<div className="row">
-				<h1>Create Your Profile</h1>
-				<p>Let's get some information to make your profile stand out</p>
+				<h1>Edit Your Current Profile</h1>
+
 				<form className="col s12">
 					<TextFieldGroup
 						name="handle"
@@ -239,11 +296,13 @@ class CreateProfile extends Component {
 	}
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
 	profile: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
+	errors: PropTypes.object.isRequired,
+	createProfile: PropTypes.func.isRequired,
+	getCurrentProfile: PropTypes.func.isRequired
 };
-
+//2 then we get the profile
 const mapStateToProps = state => ({
 	profile: state.profile,
 	errors: state.errors
@@ -251,5 +310,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ createProfile }
-)(withRouter(CreateProfile));
+	{ createProfile, getCurrentProfile }
+)(withRouter(EditProfile));

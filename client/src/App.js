@@ -1,26 +1,22 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PropTypes from "prop-types";
-import Header from "./components/HomePage/Header";
+import { connect } from "react-redux";
 
+import PropTypes from "prop-types";
+
+import Header from "./components/HomePage/Header";
 // import Footer from "./components/HomePage/Footer";
 import SignUp from "./components/Auth/SignUp/index";
 import SignIn from "./components/Auth/Login/index";
-
 import PrivateRoute from "./components/Common/PrivateRoute";
 import LandingPage from "./components/HomePage/LandingPage";
 import Dashboard from "./components/DashBoard";
 import CreateProfile from "./components/CreateProfile";
-import { connect } from "react-redux";
+import EditProfile from "./components/EditProfile";
 
 import "./App.css";
 
 class App extends Component {
-	// componentDidMount() {
-	// 	if (this.props.auth.isAuthenticated) {
-	// 		this.props.history.push("/dashboard");
-	// 	}
-	// }
 	render() {
 		return (
 			<Router>
@@ -36,6 +32,11 @@ class App extends Component {
 								exact
 								path="/create-profile"
 								component={CreateProfile}
+							/>
+							<PrivateRoute
+								exact
+								path="/edit-profile"
+								component={EditProfile}
 							/>
 						</Switch>
 					</div>

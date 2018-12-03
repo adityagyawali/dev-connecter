@@ -24,13 +24,6 @@ class SignUp extends Component {
 		}
 	}
 
-	componentWillReceiveProps = nextProps => {
-		console.log("nextPorps", nextProps);
-		if (nextProps.errors) {
-			this.setState({ errors: nextProps.errors });
-		}
-	};
-
 	handleChange = e => {
 		let target = e.target;
 		let value = target.type === "checkbox" ? target.checked : target.value;
@@ -55,7 +48,7 @@ class SignUp extends Component {
 	};
 
 	render() {
-		const { errors } = this.state;
+		const { errors } = this.props;
 		return (
 			<div className="row">
 				<h1>Sign Up</h1>

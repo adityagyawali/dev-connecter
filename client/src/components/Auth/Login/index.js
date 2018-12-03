@@ -20,17 +20,15 @@ class Login extends Component {
 		}
 	}
 
-	componentWillReceiveProps = nextProps => {
-		console.log("nextProps", nextProps);
-		if (nextProps.auth.isAuthenticated) {
-			//if the login user is authenticated direct it to dashobard
-			this.props.history.push("/dashboard");
-		}
-
-		if (nextProps.errors) {
+	componentDidUpdate = (prevProps, prevState) => {
+		console.log(prevProps);
+		if (prevProps.errors !== this.props.errors) {
 			this.setState({
-				errors: nextProps.errors
+				errors: this.props.errors
 			});
+		}
+		if (prevProps.auth.isAuthenticated !== this.props.auth.isAuthenticated) {
+			this.props.history.push("/dashboard");
 		}
 	};
 
@@ -55,6 +53,7 @@ class Login extends Component {
 
 	render() {
 		const { errors } = this.state;
+
 		return (
 			<div className="row">
 				<h1>Log In</h1>
