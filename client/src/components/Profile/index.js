@@ -40,7 +40,11 @@ class Profile extends Component {
 					<ProfileHeader profile={profile} />
 					<ProfileAbout profile={profile} />
 					<ProfileCred profile={profile} />
-					<Github />
+					{profile.githubusername ? (
+						<Github username={profile.githubusername} />
+					) : (
+						""
+					)}
 				</div>
 			);
 		}

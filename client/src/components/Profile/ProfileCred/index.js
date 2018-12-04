@@ -15,13 +15,13 @@ class ProfileCred extends Component {
 					)}
 				</p>
 				<p>
-					<h6 style={{ fontWeight: "550" }}>Position: </h6>
+					<span style={{ fontWeight: "550" }}>Position: </span>
 					{exp.title}
 				</p>
 				<p>
 					{exp.location === "" ? null : (
 						<span>
-							<h6 style={{ fontWeight: "550" }}>Location: </h6>
+							<span style={{ fontWeight: "550" }}>Location: </span>
 							{exp.location}
 						</span>
 					)}
@@ -29,7 +29,7 @@ class ProfileCred extends Component {
 				<p>
 					{exp.description === "" ? null : (
 						<span>
-							<h6 style={{ fontWeight: "550" }}>Description: </h6>
+							<span style={{ fontWeight: "550" }}>Description: </span>
 							{exp.description}
 						</span>
 					)}
@@ -49,18 +49,18 @@ class ProfileCred extends Component {
 					)}
 				</p>
 				<p>
-					<h6 style={{ fontWeight: "550" }}>Degree</h6>
+					<span style={{ fontWeight: "550" }}>Degree: </span>
 					{edu.degree}
 				</p>
 				<p>
-					<h6 style={{ fontWeight: "550" }}>Field Of Study: </h6>
+					<span style={{ fontWeight: "550" }}>Field Of Study: </span>
 					{edu.fieldofstudy}
 				</p>
 
 				<p>
 					{edu.description === "" ? null : (
 						<span>
-							<h6 style={{ fontWeight: "550" }}>Description: </h6>
+							<span style={{ fontWeight: "550" }}>Description: </span>
 							{edu.description}
 						</span>
 					)}
