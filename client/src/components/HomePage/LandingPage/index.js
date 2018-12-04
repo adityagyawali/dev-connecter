@@ -16,7 +16,7 @@ class Landing extends Component {
 	}
 	render() {
 		return (
-			<div className="App-1">
+			<div className="Landing-page">
 				<div className="Homepage">
 					<div className="container">
 						<div className="users">
@@ -35,7 +35,7 @@ class Landing extends Component {
 				</div>
 
 				<div className="leftbar-container">
-					<h1 style={{ color: "black" }}>
+					<h1 style={{ color: "black", fontSize: "2.2rem" }}>
 						Connect to the developers around the world
 					</h1>
 					<span style={{ color: "black", fontWeight: 600 }}>
@@ -43,11 +43,13 @@ class Landing extends Component {
 					</span>
 					<Segment padded>
 						<Link style={{ textDecoration: "none" }} to="/sign-in">
-							<Button className="login" fluid>
+							<Button className="login" style={{ color: "black" }} fluid>
 								Login
 							</Button>
 						</Link>
-						<Divider horizontal>Or</Divider>
+						<Divider style={{ backgroundColor: "#ffffff" }} horizontal>
+							Or
+						</Divider>
 						<Link style={{ textDecoration: "none" }} to="/sign-up">
 							<Button primary fluid>
 								Sign Up
@@ -70,7 +72,7 @@ class Landing extends Component {
 	}
 }
 Landing.propTypes = {
-	auth: PropTypes.object.is
+	auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

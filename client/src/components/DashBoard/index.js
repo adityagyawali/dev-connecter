@@ -1,43 +1,69 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import { Link } from "react-router-dom";
-import { Card, Button } from "semantic-ui-react";
 
 import Loader from "../Common/Loader";
-import { getCurrentProfile } from "../../actions/profileActions";
+import ProfileActions from "./ProfileAction";
+import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
+import Experience from "./Experience";
+import Education from "./Education";
 import "./index.css";
+
 class DashBoard extends Component {
 	componentDidMount() {
 		this.props.getCurrentProfile();
 	}
+
+	handleDelete = () => {
+		this.props.deleteAccount();
+	};
 	render() {
 		const { user } = this.props.auth;
 		const { profile, loading } = this.props.profile;
+		console.log("this.props", this.props.profile);
 
-		const button = (
-			<Link to="create-profile">
-				<Button primary>Create Profile</Button>
-			</Link>
-		);
 		let dashboardContent;
 		if (profile === null || loading) {
 			dashboardContent = <Loader />;
 		} else {
 			//Check if the logged user has profile
 			if (Object.keys(profile).length > 0) {
-				dashboardContent = <h1>TODO: DISPLAY PROFILE</h1>;
+				console.log("profile dashboard", profile);
+				dashboardContent = (
+					<div>
+						<p style={{ fontSize: "2.2rem" }}>
+							Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>{" "}
+						</p>
+						<ProfileActions />
+						<Experience experience={profile.experience} />
+						<Education education={profile.education} />
+
+						<div style={{ textAlign: "center", marginTop: "20" }}>
+							<button
+								style={{ marginRight: 10 }}
+								onClick={this.handleDelete}
+								className="btn-large waves-effect red white-text "
+							>
+								<i className="material-icons">delete_forever</i>
+								Delete My Account
+							</button>
+						</div>
+					</div>
+				);
 			} else {
 				//user is logged in but doesn't have a profiel
 				dashboardContent = (
-					<div className="card-content">
-						<Card
-							image={user.avatar}
-							header={user.name}
-							description="You haven't set up a profile. Please add some information."
-							extra={button}
-						/>
+					<div>
+						<p>Welcome {user.name}</p>
+						<p>You have not yet setup a profile, please add some info.</p>
+
+						<Link
+							to="/create-profile"
+							className="waves-effect waves-light #64b5f6 blue darken-3 btn-large white-text"
+						>
+							Create Profile
+						</Link>
 					</div>
 				);
 			}
@@ -45,7 +71,7 @@ class DashBoard extends Component {
 
 		return (
 			<div className="dashboard">
-				<h1>DashBoard</h1>
+				<h1 style={{ textAlign: "center", fontSize: "3.2rem" }}>DashBoard</h1>
 				{dashboardContent}
 			</div>
 		);
@@ -58,12 +84,12 @@ const mapStateToProps = state => ({
 });
 
 DashBoard.propTypes = {
-	getCurrentProfile: PropTypes.func,
-	auth: PropTypes.object,
-	profile: PropTypes.object
+	getCurrentProfile: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	profile: PropTypes.object.isRequired
 };
 
 export default connect(
 	mapStateToProps,
-	{ getCurrentProfile }
+	{ getCurrentProfile, deleteAccount }
 )(DashBoard);

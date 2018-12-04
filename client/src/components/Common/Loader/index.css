@@ -1,11 +1,13 @@
 .lds-spinner {
 	color: official;
 	display: inline-block;
-	position: relative;
-	left: 435%;
-	top: 180px;
+	position: absolute;
+	/* top: 180px; */
 	width: 64px;
 	height: 64px;
+	text-align: center;
+	right: 50%;
+	bottom: 50%;
 }
 .lds-spinner div {
 	transform-origin: 32px 32px;
@@ -20,7 +22,7 @@
 	width: 5px;
 	height: 14px;
 	border-radius: 20%;
-	background: black;
+	background: rgb(30, 117, 216);
 }
 .lds-spinner div:nth-child(1) {
 	transform: rotate(0deg);

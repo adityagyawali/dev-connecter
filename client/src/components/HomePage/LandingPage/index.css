@@ -1,14 +1,21 @@
-.App-1 {
+.Landing-page {
 	display: flex;
-	justify-content: space-around;
-	grid-column: 1/13;
+	height: 100vh;
+}
+
+.Homepage {
+	width: 100%;
+	background: #4ba0eb;
+	padding: 17%;
 }
 
 .users {
 	display: flex;
+	margin-bottom: 5%;
 }
 .search {
 	display: flex;
+	margin-bottom: 5%;
 }
 .chat {
 	display: flex;
@@ -31,7 +38,7 @@
 .container {
 	width: 100%;
 	margin: auto;
-	font-weight: 500;
+	font-weight: 300;
 }
 .fas {
 	font-size: 30px;
@@ -79,39 +86,8 @@
 }
 
 @media only screen and (min-device-width: 306px) and (max-device-width: 904px) and (-webkit-min-device-pixel-ratio: 1) {
-	.App-1 {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.left-container {
-		margin-top: 82px;
-		padding: 20px;
-		font-size: 14px;
-	}
-	.users p {
-		color: white;
-		font-size: 10px;
-	}
-
-	.search p {
-		color: white;
-		font-size: 10px;
-	}
-	.chat p {
-		color: white;
-		font-size: 10px;
-	}
-
-	.container {
-		width: 40%;
-		margin: auto;
-	}
-
-	.fas {
-		font-size: 10px;
-		margin-top: 15px;
-		margin-right: 8px;
-		color: white;
+	.Landing-page {
+		display: block;
+		min-height: 100vh;
 	}
 }

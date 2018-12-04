@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 export default () => {
 	return (
-		<div class="lds-spinner">
+		<div className="lds-spinner">
 			<div />
 			<div />
 			<div />

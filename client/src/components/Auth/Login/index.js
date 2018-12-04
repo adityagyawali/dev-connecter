@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
@@ -20,17 +20,15 @@ class Login extends Component {
 		}
 	}
 
-	componentWillReceiveProps = nextProps => {
-		console.log("nextProps", nextProps);
-		if (nextProps.auth.isAuthenticated) {
-			//if the login user is authenticated direct it to dashobard
-			this.props.history.push("/dashboard");
-		}
-
-		if (nextProps.errors) {
+	componentDidUpdate = (prevProps, prevState) => {
+		console.log(prevProps);
+		if (prevProps.errors !== this.props.errors) {
 			this.setState({
-				errors: nextProps.errors
+				errors: this.props.errors
 			});
+		}
+		if (prevProps.auth.isAuthenticated !== this.props.auth.isAuthenticated) {
+			this.props.history.push("/dashboard");
 		}
 	};
 
@@ -55,57 +53,50 @@ class Login extends Component {
 
 	render() {
 		const { errors } = this.state;
+
 		return (
-			<div className=" FormCenter">
-				<h5
-					style={{
-						textAlign: "center",
-						fontSize: 20,
-						paddingRight: 40,
-						color: "black"
-					}}
-				>
-					Great to see you again!!
-				</h5>
-				<form onSubmit={this.handleSubmit} className="FormFields">
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="email">
-							E-Mail Address
-						</label>
-						<input
-							type="email"
-							id="email"
-							className="FormField-Input"
-							placeholder="Enter your email"
-							name="email"
-							value={this.state.email}
-							onChange={this.handleChange}
-						/>
-						{errors.email && <p className="invalid">{errors.email}</p>}
+			<div className="row">
+				<h1>Log In</h1>
+				<p>Sign in to your DevConnector account</p>
+				<form className="col s12" onSubmit={this.handleSubmit}>
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">email</i>
+							<input
+								id="email"
+								type="email"
+								className={errors.email ? "invalid" : "validate"}
+								name="email"
+								value={this.state.email}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="email">Email</label>
+							<span className="helper-text left" data-error={errors.email} />
+						</div>
 					</div>
-
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="password">
-							Password
-						</label>
-						<input
-							type="password"
-							id="password"
-							className="FormField-Input"
-							placeholder="Enter your password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-						{errors.password && <p className="invalid">{errors.password}</p>}
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">lock</i>
+							<input
+								id="password"
+								type="password"
+								className={errors.password ? "invalid" : "validate"}
+								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="password">Password</label>
+							<span className="helper-text left" data-error={errors.password} />
+						</div>
 					</div>
-
-					<div className="FormField">
-						<button className="FormField-Button mr-20">Sign In</button>{" "}
-						<Link to="/sign-up" className="FormField-Link">
-							Create an account
-						</Link>
-					</div>
+					<button
+						className="btn-large waves-effect waves-light"
+						type="submit"
+						name="action"
+					>
+						Submit
+						<i className="material-icons right">send</i>
+					</button>
 				</form>
 			</div>
 		);
@@ -113,9 +104,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-	signIn: PropTypes.func,
-	auth: PropTypes.obj,
-	errors: PropTypes.obj
+	signIn: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

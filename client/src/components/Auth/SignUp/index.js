@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import classnames from "classnames";
+// import classnames from "classnames";
 
 import { signUp } from "../../../actions/authAction";
 
@@ -14,7 +14,7 @@ class SignUp extends Component {
 		password: "",
 		password2: "",
 		name: "",
-		hasAgreed: false,
+
 		errors: {}
 	};
 
@@ -23,13 +23,6 @@ class SignUp extends Component {
 			this.props.history.push("/dashboard");
 		}
 	}
-
-	componentWillReceiveProps = nextProps => {
-		console.log("nextPorps", nextProps);
-		if (nextProps.errors) {
-			this.setState({ errors: nextProps.errors });
-		}
-	};
 
 	handleChange = e => {
 		let target = e.target;
@@ -55,107 +48,86 @@ class SignUp extends Component {
 	};
 
 	render() {
-		const { errors } = this.state;
+		const { errors } = this.props;
 		return (
-			<div className=" FormCenter">
-				<h5
-					style={{
-						textAlign: "center",
-						fontSize: 20,
-						paddingRight: 40,
-						color: "black"
-					}}
-				>
-					Create a new account!!
-				</h5>
-				<form onSubmit={this.handleSubmit} className="FormFields">
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="name">
-							Full Name
-						</label>
-						<input
-							type="text"
-							// id="name"
-							className={classnames("FormField-Input", {
-								"is-invalid": errors.name
-							})}
-							placeholder="Enter your full name"
-							name="name"
-							value={this.state.name}
-							onChange={this.handleChange}
-						/>
-						{errors.name && <p className="invalid">{errors.name}</p>}
-					</div>
-
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="email">
-							E-Mail Address
-						</label>
-						<input
-							type="email"
-							// id="email"
-							className="FormField-Input"
-							placeholder="Enter your email"
-							name="email"
-							value={this.state.email}
-							onChange={this.handleChange}
-						/>
-						{errors.email && <p className="invalid">{errors.email}</p>}
-					</div>
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="password">
-							Password
-						</label>
-						<input
-							type="password"
-							// id="password"
-							className="FormField-Input"
-							placeholder="Enter your password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-						{errors.password && <p className="invalid">{errors.password}</p>}
-					</div>
-					<div className="FormField">
-						<label className="FormField-Label" htmlFor="password">
-							Confirm Password
-						</label>
-						<input
-							type="password"
-							// id="password2"
-							className="FormField-Input"
-							placeholder="Confirm password"
-							name="password2"
-							value={this.state.password2}
-							onChange={this.handleChange}
-						/>
-						{errors.password2 && <p className="invalid">{errors.password2}</p>}
-					</div>
-
-					<div className="FormField">
-						<label className="FormField-CheckboxLabel">
+			<div className="row">
+				<h1>Sign Up</h1>
+				<p>Create your DevConnector account</p>
+				<form className="col s12" onSubmit={this.handleSubmit}>
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">account_circle</i>
 							<input
-								className="FormField-Checkbox"
-								type="checkbox"
-								name="hasAgreed"
-								value={this.state.hasAgreed}
+								id="name"
+								type="text"
+								className={errors.name ? "invalid" : "validate"}
+								name="name"
+								value={this.state.name}
 								onChange={this.handleChange}
-								// required
-							/>{" "}
-							I agree all statements in{" "}
-							<a href="/" className="FormField-TermsLink">
-								terms of service
-							</a>
-						</label>
+							/>
+							<label htmlFor="name">Full Name</label>
+							<span className="helper-text left" data-error={errors.name} />
+						</div>
 					</div>
-
-					<div className="FormField">
-						<button className="FormField-Button mr-20">Sign Up</button>{" "}
-						<Link to="/sign-in" className="FormField-Link">
-							I'm already member
-						</Link>
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">email</i>
+							<input
+								id="email"
+								type="email"
+								className={errors.email ? "invalid" : "validate"}
+								name="email"
+								value={this.state.email}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="email">Email</label>
+							<span className="helper-text left" data-error={errors.email}>
+								This site uses Gravatar so if you want a profile image, use a
+								Gravatar email
+							</span>
+						</div>
 					</div>
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">lock</i>
+							<input
+								id="password"
+								type="password"
+								className={errors.password ? "invalid" : "validate"}
+								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="password">Password</label>
+							<span className="helper-text left" data-error={errors.password} />
+						</div>
+					</div>
+					<div className="row">
+						<div className="input-field col s12">
+							<i className="material-icons prefix">lock</i>
+							<input
+								id="password2"
+								type="password"
+								className={errors.password2 ? "invalid" : "validate"}
+								name="password2"
+								value={this.state.password2}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="password2">Confirm Password</label>
+							<span
+								className="helper-text left"
+								data-error={errors.password2}
+							/>
+						</div>
+					</div>
+					<button
+						className="btn-large waves-effect waves-light"
+						type="submit"
+						name="action"
+					>
+						Submit
+						<i className="material-icons right">send</i>
+					</button>
 				</form>
 			</div>
 		);
