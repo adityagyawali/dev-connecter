@@ -15,14 +15,14 @@ class ProfileHeader extends Component {
 		return (
 			<div className="row">
 				<div className="row">
-					<div className="col s12 m8">
-						<div className="card-panel blue lighten-2 black-text ">
+					<div className="col s12 m8" style={{ margin: "auto" }}>
+						<div className="card-panel blue lighten-2 lightgreen-text ">
 							<img
 								className="circle responsive-img"
 								src={user.avatar}
 								alt={user.name}
 							/>
-							<h1>{user.name}</h1>
+							<h3>{user.name}</h3>
 							<h5>
 								{status} {isEmpty(company) ? null : <span>at {company}</span>}
 							</h5>

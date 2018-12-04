@@ -20,6 +20,7 @@ class Profile extends Component {
 	};
 
 	render() {
+		console.log("this.props.auth", this.props.auth);
 		console.log("yolo", this.props.profile);
 		const { profile, loading } = this.props.profile;
 		let profileContent;
@@ -37,8 +38,8 @@ class Profile extends Component {
 						</Link>
 					</div>
 					<ProfileHeader profile={profile} />
-					<ProfileAbout />
-					<ProfileCred />
+					<ProfileAbout profile={profile} />
+					<ProfileCred profile={profile} />
 					<Github />
 				</div>
 			);
@@ -53,7 +54,8 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-	profile: state.profile
+	profile: state.profile,
+	auth: state.auth
 });
 
 export default connect(

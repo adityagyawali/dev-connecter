@@ -90,7 +90,7 @@ class Login extends Component {
 						</div>
 					</div>
 					<button
-						className="btn-large waves-effect waves-light"
+						className="waves-effect waves-light  blue darken-3 btn-large white-text"
 						type="submit"
 						name="action"
 					>
