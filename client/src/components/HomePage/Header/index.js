@@ -48,22 +48,36 @@ class Header extends Component {
 		);
 
 		return (
-			<nav className="indigo darken-4">
-				<div className="nav-wrapper container">
-					<ul className="left">
+			// <nav className="indigo darken-4">
+			// 	<div className="nav-wrapper container">
+			// 		<ul className="left">
+			// 			<li>
+			// 				<NavLink
+			// 					to="/"
+			// 					className="logo mg-70 scale-transition transparent"
+			// 				>
+			// 					DevConnector
+			// 				</NavLink>
+			// 			</li>
+			// 			<li>
+			// 				<NavLink to="/profile">Developers</NavLink>
+			// 			</li>
+			// 		</ul>
+
+			// 		{isAuthenticated ? authLinks : guestLinks}
+			// 	</div>
+			// </nav>
+
+			<nav>
+				<div className="nav-wrapper" style={{ backgroundColor: "#312727" }}>
+					<ul style={{ display: "flex" }} className="left">
+						<NavLink to="/" className="logo mg-70 scale-transition transparent">
+							DevConnector
+						</NavLink>
 						<li>
-							<NavLink
-								to="/"
-								className="logo mg-70 scale-transition transparent"
-							>
-								DevConnector
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to="/profile">Developers</NavLink>
+							<NavLink to="/profiles">Developers</NavLink>
 						</li>
 					</ul>
-
 					{isAuthenticated ? authLinks : guestLinks}
 				</div>
 			</nav>

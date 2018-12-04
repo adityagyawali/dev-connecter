@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
-import TextFieldGroup from "../Common/TextFiledGroup";
+import { TextFieldGroup } from "../Common/TextFiledGroup";
 
 import { isEmpty } from "../../validation/is-empty";
 
@@ -280,7 +280,7 @@ class EditProfile extends Component {
 						{socialInputs}
 						<div className="row">
 							<button
-								className="btn-large waves-effect waves-light"
+								className="waves-effect waves-light #64b5f6 blue darken-3 btn-large white-text"
 								type="submit"
 								name="action"
 								onClick={this.handleSubmit}

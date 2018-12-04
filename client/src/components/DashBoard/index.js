@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Loader from "../Common/Loader";
 import ProfileActions from "./ProfileAction";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
+import Experience from "./Experience";
+import Education from "./Education";
 import "./index.css";
 
 class DashBoard extends Component {
@@ -19,6 +21,7 @@ class DashBoard extends Component {
 	render() {
 		const { user } = this.props.auth;
 		const { profile, loading } = this.props.profile;
+		console.log("this.props", this.props.profile);
 
 		let dashboardContent;
 		if (profile === null || loading) {
@@ -33,15 +36,19 @@ class DashBoard extends Component {
 							Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>{" "}
 						</p>
 						<ProfileActions />
+						<Experience experience={profile.experience} />
+						<Education education={profile.education} />
 
-						<button
-							style={{ marginRight: 10 }}
-							onClick={this.handleDelete}
-							className="btn-large waves-effect red white-text "
-						>
-							<i className="material-icons">delete_forever</i>
-							Delete My Account
-						</button>
+						<div style={{ textAlign: "center", marginTop: "20" }}>
+							<button
+								style={{ marginRight: 10 }}
+								onClick={this.handleDelete}
+								className="btn-large waves-effect red white-text "
+							>
+								<i className="material-icons">delete_forever</i>
+								Delete My Account
+							</button>
+						</div>
 					</div>
 				);
 			} else {
@@ -53,7 +60,7 @@ class DashBoard extends Component {
 
 						<Link
 							to="/create-profile"
-							className="btn-large waves-effect waves-light"
+							className="waves-effect waves-light #64b5f6 blue darken-3 btn-large white-text"
 						>
 							Create Profile
 						</Link>

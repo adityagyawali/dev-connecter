@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { createProfile } from "../../actions/profileActions";
-import TextFieldGroup from "../Common/TextFiledGroup";
+import { TextFieldGroup } from "../Common/TextFiledGroup";
 
 import "./index.css";
 class CreateProfile extends Component {
