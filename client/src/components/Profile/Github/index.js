@@ -18,11 +18,13 @@ class Github extends Component {
 			`https://api.github.com/users/${username}/repos?per_page=${countRepo}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
 		)
 			.then(res => res.json())
-			.then(data =>
-				this.setState({
-					repos: data
-				})
-			);
+			.then(data => {
+				if (this.refs.myRef) {
+					this.setState({
+						repos: data
+					});
+				}
+			});
 	};
 
 	render() {
@@ -62,7 +64,7 @@ class Github extends Component {
 		));
 
 		return (
-			<div className="row">
+			<div className="row" ref="myRef">
 				<h3>Latest Github Repos</h3>
 				{username === "" ? (
 					<p>There is no repos or username is not valid.</p>

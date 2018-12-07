@@ -1,0 +1,19 @@
+.card-content {
+	margin: 0;
+	height: auto;
+}
+
+.row .col.s12 {
+	width: 50%;
+	margin: auto;
+	left: auto;
+	right: auto;
+}
+
+.row .col {
+	float: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 0.75rem;
+	min-height: 1px;
+}

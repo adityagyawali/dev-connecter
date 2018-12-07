@@ -48,6 +48,7 @@ export const getProfiles = () => dispatch => {
 
 //get single profile
 export const getSingleProfile = handle => dispatch => {
+	dispatch(setProfileLoading());
 	axios
 		.get(`http://localhost:5000/api/profile/handle/${handle}`)
 		.then(res =>
@@ -59,7 +60,7 @@ export const getSingleProfile = handle => dispatch => {
 		.catch(err =>
 			dispatch({
 				type: GET_PROFILE,
-				payload: {}
+				payload: null
 			})
 		);
 };

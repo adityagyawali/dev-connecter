@@ -19,10 +19,17 @@ class Profile extends Component {
 		}
 	};
 
+	// componentDidUpdate = (prevProps, prevState) => {
+	// 	if (prevProps.profile.profile === null && prevProps.profile.loading) {
+	// 		this.props.history.push("/not-found");
+	// 	}
+	// };
+
 	render() {
 		console.log("this.props.auth", this.props.auth);
 		console.log("yolo", this.props.profile);
 		const { profile, loading } = this.props.profile;
+
 		let profileContent;
 		if (profile === null || loading) {
 			profileContent = <Loader />;

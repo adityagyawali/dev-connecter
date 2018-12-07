@@ -17,7 +17,7 @@ class Header extends Component {
 		const authLinks = (
 			<ul className="right valign-wrapper">
 				<li>
-					<NavLink to="/post">Post Feed</NavLink>
+					<NavLink to="/feed">Post Feed</NavLink>
 				</li>
 				<li>
 					<NavLink to="/dashboard">Dashboard</NavLink>
