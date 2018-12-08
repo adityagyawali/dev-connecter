@@ -19,6 +19,7 @@ import Profiles from "./components/Profiles";
 import Profile from "./components/Profile";
 import Posts from "./components/Posts";
 import NotFound from "./components/NotFound";
+import SinglePost from "./components/SinglePost";
 
 import "./App.css";
 
@@ -59,6 +60,11 @@ class App extends Component {
 								component={AddEducation}
 							/>
 							<PrivateRoute exact path="/feed" component={Posts} />
+							<PrivateRoute
+								exact
+								path="/postcomment/:id"
+								component={SinglePost}
+							/>
 						</Switch>
 					</div>
 					<Footer />

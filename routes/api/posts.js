@@ -32,7 +32,7 @@ router.post(
 		const newPost = new Post({
 			text: req.body.text,
 			name: req.body.name,
-			avatar: req.body.name,
+			avatar: req.body.avatar,
 			user: req.user.id, //current logged in user
 		})
 		newPost.save().then(post => res.json(post))
@@ -57,6 +57,7 @@ router.get('/:id', (req, res) => {
 	console.log('params', req.params.id)
 
 	Post.findById(req.params.id)
+		.sort({ date: -1 })
 		.then(post => res.json(post))
 		.catch(() => res.json('No post found with that id'))
 })
@@ -76,10 +77,10 @@ router.delete(
 				console.log('post', post.user)
 
 				if (post.user.toString() !== req.user.id) {
-					return res.status(401).json('unauthorized')
+					return res.status(401).json({ unauthorized: 'unauthorized' })
 				}
 				post
-					.deleteOne()
+					.remove()
 					.then(() => res.json({ success: true }))
 					.catch(() => res.json({ notfound: 'post not found' }))
 			})
@@ -94,19 +95,21 @@ router.post(
 	'/like/:id',
 	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
-		Profile.findById(req.user.id).then(() => {
+		Profile.findOne({ user: req.user.id }).then(() => {
 			Post.findById(req.params.id).then(post => {
-				if (post.likes.filter(like => like.id === req.user.id).length > 0) {
+				if (
+					post.likes.filter(like => like.user.toString() === req.user.id)
+						.length > 0
+				) {
 					return res.json({ error: 'User already liked this post' })
-				} else {
-					//add to lieks array
-					post.likes.unshift({ user: req.user.id })
-					//save the changes
-					post
-						.save()
-						.then(post => res.json(post))
-						.catch(err => res.json(err))
 				}
+				//add to lieks array
+				post.likes.unshift({ user: req.user.id })
+				//save the changes
+				post
+					.save()
+					.then(post => res.json(post))
+					.catch(err => res.json(err))
 			})
 		})
 	}
@@ -118,9 +121,12 @@ router.post(
 	'/unlike/:id',
 	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
-		Profile.findById(req.user.id).then(() => {
+		Profile.findOne({ user: req.user.id }).then(() => {
 			Post.findById(req.params.id).then(post => {
-				if (post.likes.filter(like => like.id === req.user.id).length === 0) {
+				if (
+					post.likes.filter(like => like.user.toString() === req.user.id)
+						.length === 0
+				) {
 					return res.json({ error: 'You haven\'t like the post' })
 				}
 				const removeLike = post.likes

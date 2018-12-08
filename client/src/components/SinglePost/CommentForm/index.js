@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { addPost } from "../../../actions/postActions";
+import { addComment } from "../../../actions/postActions";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 
-import "./index.css";
-
-class PostForm extends Component {
+class CommentForm extends Component {
 	state = {
 		text: "",
 		errors: {}
@@ -22,12 +20,13 @@ class PostForm extends Component {
 		e.preventDefault();
 		const { text } = this.state;
 		const { user } = this.props.auth;
-		const newPost = {
+		const { postId } = this.props;
+		const newComment = {
 			text,
 			name: user.name,
 			avatar: user.avatar
 		};
-		this.props.addPost(newPost);
+		this.props.addComment(postId, newComment);
 
 		this.setState({
 			text: ""
@@ -42,9 +41,6 @@ class PostForm extends Component {
 			<div className="row">
 				<div className="col s12">
 					<div className="card left-align">
-						<div className="card-content">
-							<span className="flow-text">What's on your mind ?</span>
-						</div>
 						<div className="divider" />
 						<div className="card-content black-text">
 							<div className="row">
@@ -62,10 +58,8 @@ class PostForm extends Component {
 												name="text"
 												onChange={this.handleChange}
 											/>
-											<label htmlFor="textarea2">Create A Post</label>
-											<span className="helper-text" data-error={errors.text}>
-												New in the Tech World ??
-											</span>
+											<label htmlFor="textarea2">write a comment..</label>
+											<span className="helper-text" data-error={errors.text} />
 										</div>
 									</div>
 									<button
@@ -84,10 +78,11 @@ class PostForm extends Component {
 	}
 }
 
-PostForm.propTypes = {
-	addPost: PropTypes.func.isRequired,
+CommentForm.propTypes = {
+	addComment: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired
+	// postId: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -97,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ addPost }
-)(PostForm);
+	{ addComment }
+)(CommentForm);

@@ -23,7 +23,7 @@ class Header extends Component {
 					<NavLink to="/dashboard">Dashboard</NavLink>
 				</li>
 				<li style={{ display: "flex" }}>
-					<a onClick={this.onLogOut}>
+					<a href="true" onClick={this.onLogOut}>
 						<img
 							src={user.avatar}
 							alt={user.name}
