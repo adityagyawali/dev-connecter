@@ -11,31 +11,38 @@ class CommentItem extends Component {
 	render() {
 		const { comment, postId, auth } = this.props;
 		return (
-			<div className="col s12">
-				<div
-					className="card horizontal row black-text"
-					style={{ padding: "2% 0" }}
-				>
-					<div className="col s3 center-align post-avatar">
+			<div className="col s12 m7">
+				<div className="card horizontal">
+					<div className="card-image">
 						<img
 							className="responsive-img circle"
 							alt={comment._id}
 							src={comment.avatar}
-							style={{ width: "50%", margin: "auto" }}
+							style={{
+								height: 50,
+								width: 50,
+								borderRadius: "50%",
+								margin: "auto"
+							}}
 						/>
-						<span className="helper-text">{comment.name}</span>
+						<p>{comment.name}</p>
 					</div>
-					<div className="card-stacked col s9 left-align">
-						<span className="card-content flow-text">{comment.text}</span>
+					<div className="card-stacked">
+						<div className="card-content">
+							<span className="card-content flow-text">{comment.text}</span>
+						</div>
+						<div className="card-action">
+							{comment.user === auth.user.id ? (
+								<button
+									onClick={() => this.onDelete(postId, comment._id)}
+									className="btn waves-effect waves-light red"
+								>
+									{/* <i className="material-icons">delete</i> */}
+									DELETE
+								</button>
+							) : null}
+						</div>
 					</div>
-					{comment.user === auth.user.id ? (
-						<button
-							onClick={() => this.onDelete(postId, comment._id)}
-							className="btn waves-effect waves-light red"
-						>
-							<i className="material-icons">delete</i>
-						</button>
-					) : null}
 				</div>
 			</div>
 		);

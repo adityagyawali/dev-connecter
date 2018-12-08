@@ -16,7 +16,8 @@ class SinglePost extends Component {
 
 	render() {
 		const { post, loading } = this.props.post;
-		console.log("singlepost", this.props);
+		console.log("singlepost", this.props.post);
+
 		let singlePostContent;
 		if (post === null || loading || Object.keys(post).length === 0) {
 			singlePostContent = <Loader />;
@@ -24,6 +25,8 @@ class SinglePost extends Component {
 			singlePostContent = (
 				<div>
 					<PostItem post={post} showActions={false} />
+					<CommentFeed postId={post._id} comments={post.comments} />
+					<CommentForm postId={post._id} />
 				</div>
 			);
 		}
@@ -33,8 +36,6 @@ class SinglePost extends Component {
 					Back To Feed
 				</Link>
 				{singlePostContent}
-				<CommentForm postId={post._id} />
-				<CommentFeed postId={post._id} comments={post.comments} />
 			</div>
 		);
 	}

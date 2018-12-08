@@ -7,7 +7,7 @@ class CommentFeed extends Component {
 		const { comments, postId } = this.props;
 		console.log("yolooooooofeeeed", comments);
 		return comments.map(comment => (
-			<CommentItem key={comment.id} comment={comment} postId={postId} />
+			<CommentItem key={comment._id} comment={comment} postId={postId} />
 		));
 	}
 }

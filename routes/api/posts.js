@@ -181,13 +181,14 @@ router.post(
 //@access Private
 router.delete(
 	'/comment/:id/:comment_id',
-	passport.authenticate('jwt'),
+	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
 		Post.findById(req.params.id).then(post => {
 			//check if comment exits
 			if (
-				post.comments.filter(comment => comment._id === req.params.comment_id)
-					.length > 0
+				post.comments.filter(
+					comment => comment._id.toString() === req.params.comment_id
+				).length === 0
 			) {
 				return res.json('comment doesnt exist')
 			}
@@ -196,7 +197,7 @@ router.delete(
 				.map(comment => comment._id.toString())
 				.indexOf(req.params.comment_id)
 
-			post.comments.splice(removeComment)
+			post.comments.splice(removeComment, 1)
 
 			post
 				.save()
