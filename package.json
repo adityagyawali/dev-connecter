@@ -2,16 +2,17 @@
 	"name": "devconnector",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
 		"client-install-": "yarn start --prefix client",
 		"start": "node server.js",
 		"server": "nodemon server.js",
 		"client": " cd client && yarn start",
-		"dev": "concurrently \"yarn run server\" \"yarn run client\""
+		"dev": "concurrently \"yarn run server\" \"yarn run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --prefix client && yarn build"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Aditya Gyawali",
 	"license": "ISC",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",

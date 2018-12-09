@@ -1,1 +1,3 @@
-config/keys.js
+config/keys.js_dev.js
+yarn.lock
+/node_modules

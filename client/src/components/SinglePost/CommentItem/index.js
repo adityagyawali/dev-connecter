@@ -21,12 +21,12 @@ class CommentItem extends Component {
 								className="responsive-img circle"
 								alt={comment._id}
 								src={comment.avatar}
-								style={{
-									height: 50,
-									width: 50,
-									borderRadius: "50%",
-									margin: "auto"
-								}}
+								// style={{
+								// 	height: 50,
+								// 	width: 50,
+								// 	borderRadius: "50%",
+								// 	margin: "auto"
+								// }}
 							/>
 							<span>{comment.name}</span>
 						</div>
