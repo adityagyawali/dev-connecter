@@ -22,3 +22,10 @@
 	padding: 0 0.75rem;
 	min-height: 1px;
 } */
+
+@media only screen and (max-width: 600px) {
+	.row .col.s12 {
+		margin-top: 57px;
+		width: 100%;
+	}
+}

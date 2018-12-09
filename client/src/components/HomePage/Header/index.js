@@ -16,19 +16,24 @@ class Header extends Component {
 		const { isAuthenticated, user } = this.props.auth;
 		const authLinks = (
 			<ul className="right valign-wrapper">
-				<li>
+				<li className="post-feed">
 					<NavLink to="/feed">Post Feed</NavLink>
 				</li>
-				<li>
+				<li className="dashboard">
 					<NavLink to="/dashboard">Dashboard</NavLink>
 				</li>
-				<li style={{ display: "flex" }}>
-					<a href="true" onClick={this.onLogOut}>
+				<li className="logout" style={{ display: "flex" }}>
+					<a href="true" onClick={this.onLogOut} style={{ display: "flex" }}>
 						<img
 							src={user.avatar}
 							alt={user.name}
 							className="circle responsive-img"
-							style={{ width: "35px", marginRight: "10px" }}
+							style={{
+								height: 40,
+								width: "35px",
+								marginRight: "10px",
+								marginTop: 10
+							}}
 						/>
 						<span>Logout</span>
 					</a>

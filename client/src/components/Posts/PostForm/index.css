@@ -4,10 +4,10 @@
 }
 
 .row .col.s12 {
-	width: 50%;
+	width: 80%;
 	margin: auto;
-	left: auto;
-	right: auto;
+	/* left: auto;
+	right: auto;  */
 }
 
 .row .col {

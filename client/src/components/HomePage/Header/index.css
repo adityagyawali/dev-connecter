@@ -1,51 +1,22 @@
-/* .header-text {
-	display: flex;
+img.responsive-img {
+	height: 34px;
+	margin-top: 15px;
 }
 
-.geekconnector {
-	font-size: 24px;
-	font-weight: 700;
-	color: #ffffff;
-	cursor: pointer;
-}
-.geeks {
-	font-size: 24px;
-	font-weight: 700;
-	color: #ffffff;
-	cursor: pointer;
-}
-ul li {
-	list-style: none;
-	margin-right: 20px;
-}
+@media only screen and (max-width: 600px) {
+	ul.right.valign-wrapper {
+		padding-left: 0;
+		list-style-type: none;
+		width: 100%;
 
-li:hover {
-	color: #4594da;
-}
+		background: black;
+	}
 
-.home-link {
-	text-decoration: none;
+	.logout {
+		display: flex;
+		position: absolute;
+		top: 20;
+		top: 0px;
+		right: 20px;
+	}
 }
-
-.avatar {
-	height: 30px;
-	width: 30px;
-	border-radius: 50%;
-	margin-right: 5px;
-}
-
-.logout-anchor {
-	display: flex;
-	text-decoration: none;
-}
-
-.logout-anchor > p {
-	color: white;
-	margin: 0px;
-	font-size: 19px;
-}
-
-ul.logout-header {
-	display: flex;
-	justify-content: flex-end;
-} */

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Header from "./components/HomePage/Header";
-import Footer from "./components/HomePage/Footer";
+
 import SignUp from "./components/Auth/SignUp/index";
 import SignIn from "./components/Auth/Login/index";
 import PrivateRoute from "./components/Common/PrivateRoute";
@@ -67,7 +67,6 @@ class App extends Component {
 							/>
 						</Switch>
 					</div>
-					<Footer />
 				</div>
 			</Router>
 		);

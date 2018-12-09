@@ -1,0 +1,16 @@
+.row .col.s6 {
+	margin: auto;
+}
+
+.card-panel.row {
+	display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+	.row .col.s6 {
+		width: 100%;
+	}
+	.card-panel.row {
+		flex-direction: column;
+	}
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import "./index.css";
 class ProfileCred extends Component {
 	render() {
 		const { experience, education } = this.props.profile;
@@ -68,7 +69,7 @@ class ProfileCred extends Component {
 			</li>
 		));
 		return (
-			<div className="row" style={{ display: "flex" }}>
+			<div className="row">
 				<div className="col s6">
 					<div className="card-panel z-depth-1">
 						<h3 className="blue-text">Experience</h3>

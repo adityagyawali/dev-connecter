@@ -1,0 +1,44 @@
+img.circle.responsive-img {
+	height: 150px;
+	width: 150px;
+	margin: auto;
+}
+
+.offset-l3 {
+	width: 80%;
+	margin: auto;
+}
+
+.card-action {
+	width: 20%;
+	margin: auto;
+}
+
+.col.s10 {
+	border: 1px solid black;
+	padding: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+	.offset-l3 {
+		width: 100%;
+	}
+	img.circle.responsive-img {
+		height: 50px;
+		width: 50px;
+	}
+
+	.card-action {
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+	}
+
+	.row .col.s10 {
+		width: 83.3333333333%;
+		margin-left: auto;
+		left: auto;
+		right: auto;
+		padding: 30px;
+	}
+}
